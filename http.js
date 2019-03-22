@@ -4,7 +4,11 @@ const http = require('http');
 const port = 3000;
 
 const requestHandler = (request, response) => {
-    response.end('Hello to this great world!')
+    response.end(fs.writeFile('hello-world.txt', 'Hello to this great World!', 'utf8', (err) => {
+        if (err) throw err;
+
+        console.log('Hello, world')
+    }))
 };
 
 server.listen(port, (err) => {
@@ -12,5 +16,5 @@ server.listen(port, (err) => {
         return console.log('You have an error: ${err}');
     } 
 
-    console.log('Hello to this great world!');
+    console.log('success');
 });
